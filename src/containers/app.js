@@ -4,10 +4,9 @@
 import React from 'react-native';
 import { connect } from 'react-redux/native';
 import { bindActionCreators } from 'redux';
-// import Immutable, { get } from 'immutable';
 
 // Actions
-import { loadMessage } from '../reducers/modules/message';
+import { actionLoadRepoData } from '../reducers/modules/repo';
 
 const {
   Text,
@@ -17,33 +16,47 @@ const {
 class App extends React.Component {
 
   static propTypes = {
-    loadMessage: React.PropTypes.func,
+    actionLoadRepoData: React.PropTypes.func,
     dispatch: React.PropTypes.func,
-    message: React.PropTypes.object,
+    repo: React.PropTypes.object,
     isFetching: React.PropTypes.bool,
   };
 
   componentDidMount() {
-    this.props.loadMessage();
+    this.props.actionLoadRepoData();
   }
 
   render() {
+    const { repo } = this.props;
+
+    if (repo.get('isFetching')) {
+      return (
+        <Text>
+          Loading...
+        </Text>
+      );
+    }
+
     return (
       <ScrollView
         style={{ flex: 1 }}
         contentContainerStyle={{
-          justifyContent: 'center',
-          alignItems: 'center',
+          padding: 30,
         }}
       >
         <Text>
-        {
-          console.log(this.props.message.get('isFetching'))
-        }
           {
-            this.props.message.get('isFetching')
-              ? 'Loading'
-              : this.props.message.get('data')
+            `Repo name: ${repo.get('data').name}`
+          }
+        </Text>
+        <Text>
+          {
+            `Forks: ${repo.get('data').forks}`
+          }
+        </Text>
+        <Text>
+          {
+            `Stars: ${repo.get('data').stargazers_count}`
           }
         </Text>
       </ScrollView>
@@ -52,21 +65,8 @@ class App extends React.Component {
 }
 
 export default connect(
-  ({ message }) => ({ message }),
+  ({ repo }) => ({ repo }),
   dispatch => bindActionCreators({
-    loadMessage,
+    actionLoadRepoData,
   }, dispatch)
 )(App);
-// export default connect(
-//   state => {
-//     console.log(state);
-
-//     return ({
-//       message: state.message.data,
-//       isFetching: state.message.isFetching,
-//     })
-//   },
-//   dispatch => bindActionCreators({
-//     loadMessage,
-//   }, dispatch)
-// )(App);
