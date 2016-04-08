@@ -1,8 +1,7 @@
-import R from 'ramda';
 import Immutable from 'immutable';
 
 // Utils
-import { initialStatus, statusFailure, statusRequest, statusSuccess } from '../utils/request';
+import { initialStatus } from '../utils/request';
 import { apiLoadPlaces } from '../../utils/api/messages';
 import { createReducer } from '../utils/reducer';
 
@@ -20,29 +19,25 @@ const initialState = Immutable.fromJS({
   data: defaultData,
 });
 
-const LData = R.lensProp('data');
-
 export const message = createReducer({
 
   // Request
   ['LOAD_MESSAGE_REQUEST']: state =>
-    R.compose(
-      R.set(LData, defaultData),
-      statusRequest
-    )(state),
+    state
+      .set('data', defaultData)
+      .set('isFetching', true),
 
   // Failure
   ['LOAD_MESSAGE_FAILURE']: (state, { payload }) =>
-    R.compose(
-      R.set(LData, defaultData),
-      statusFailure(payload)
-    )(state),
+    state
+      .set('errors', 'Error')
+      .set('isFetching', false),
 
   // Success
   ['LOAD_MESSAGE_SUCCESS']: (state, { payload: { data } }) =>
-    R.compose(
-      R.set(LData, data),
-      statusSuccess
-    )(state),
+    state
+      .set('data', data)
+      .set('error', {})
+      .set('isFetching', false),
 
 }, initialState);

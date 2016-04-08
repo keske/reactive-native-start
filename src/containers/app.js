@@ -19,7 +19,7 @@ class App extends React.Component {
   static propTypes = {
     loadMessage: React.PropTypes.func,
     dispatch: React.PropTypes.func,
-    message: React.PropTypes.string,
+    message: React.PropTypes.object,
     isFetching: React.PropTypes.bool,
   };
 
@@ -37,8 +37,13 @@ class App extends React.Component {
         }}
       >
         <Text>
+        {
+          console.log(this.props.message.get('isFetching'))
+        }
           {
-            this.props.isFetching ? 'Loading' : this.props.message
+            this.props.message.get('isFetching')
+              ? 'Loading'
+              : this.props.message.get('data')
           }
         </Text>
       </ScrollView>
@@ -47,11 +52,21 @@ class App extends React.Component {
 }
 
 export default connect(
-  state => ({
-    message: state.message.data,
-    isFetching: state.message.isFetching,
-  }),
+  ({ message }) => ({ message }),
   dispatch => bindActionCreators({
     loadMessage,
   }, dispatch)
 )(App);
+// export default connect(
+//   state => {
+//     console.log(state);
+
+//     return ({
+//       message: state.message.data,
+//       isFetching: state.message.isFetching,
+//     })
+//   },
+//   dispatch => bindActionCreators({
+//     loadMessage,
+//   }, dispatch)
+// )(App);
