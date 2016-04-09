@@ -2,7 +2,7 @@
 
 import Promise from 'bluebird';
 
-const isPromise = (obj : Object) : String => obj && typeof obj.then === 'function';
+const isPromise = obj => obj && typeof obj.then === 'function';
 const hasPromiseProps = (obj = {}) => Object.keys(obj).some(key => isPromise(obj[key]));
 
 const resolveProps = obj => {

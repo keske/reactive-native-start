@@ -1,12 +1,28 @@
 {
-  "name": "Application",
-  "version": "0.0.1",
+  "name": "Reactive-Native-Start",
+  "version": "0.0.2",
+  "description": "React Native + Redux + Immutable + Babel boilerplate",
+  "author": "Andrey Keske <hello@andreykeske.com>",
   "private": false,
   "scripts": {
     "flow": "flow check",
     "lint": "eslint --ext .js,.jsx src",
     "start": "node_modules/react-native/packager/packager.sh"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keske/reactive-native-start"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "babel6",
+    "boilerplate",
+    "redux",
+    "immutable",
+    "eslint",
+    "flowtype"
+  ],
   "dependencies": {
     "babel-eslint": "^6.0.2",
     "babel-preset-es2015": "^6.3.13",
@@ -15,7 +31,6 @@
     "babel-preset-react-native-stage-0": "^1.0.1",
     "babel-preset-stage-0": "^6.3.13",
     "immutable-js": "^0.3.1-6",
-    "lodash": "^4.8.2",
     "ramda": "^0.20.1",
     "react": "^0.14.8",
     "react-native": "^0.23.0",
@@ -27,7 +42,6 @@
     "superagent-bluebird-promise": "^3.0.0"
   },
   "devDependencies": {
-    "concurrently": "^2.0.0",
     "eslint": "^2.7.0",
     "eslint-config-airbnb": "^6.1.0",
     "eslint-plugin-react": "^4.2.3"

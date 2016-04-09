@@ -4,12 +4,9 @@
 import React from 'react-native';
 import App from '../containers/app';
 
-let {
-  View,
-  Text,
-} = React;
+const { View } = React;
 
-class Scene extends React.Component {
+export default class Scene extends React.Component {
   render() {
     return (
       <View
@@ -24,5 +21,3 @@ class Scene extends React.Component {
     );
   }
 }
-
-export default Scene;

@@ -39,14 +39,14 @@ class App extends React.Component {
 
     return (
       <ScrollView
-        style={{ flex: 1 }}
         contentContainerStyle={{
-          padding: 30,
+          flex: 1,
+          justifyContent: 'center',
         }}
       >
         <Text>
           {
-            `Repo name: ${repo.get('data').name}`
+            `Repo: ${repo.get('data').name}`
           }
         </Text>
         <Text>
