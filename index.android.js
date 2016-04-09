@@ -1,8 +1,8 @@
-import React from "react-native";
-import Root from "./src/containers/root";
+import React from 'react-native';
 
-const {
-  AppRegistry
-} = React;
+// Root component
+import Root from './src/containers/root';
 
-AppRegistry.registerComponent("App", () => Root);
+const { AppRegistry } = React;
+
+AppRegistry.registerComponent('App', () => Root);

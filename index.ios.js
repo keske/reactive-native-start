@@ -1,6 +1,6 @@
 import React from 'react-native';
 
-// Components
+// Root component
 import Root from './src/containers/root';
 
 const { AppRegistry } = React;

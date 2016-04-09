@@ -1,4 +1,3 @@
-import R from 'ramda';
 import { getErrors } from './error.js';
 
 export const initialStatus = {
@@ -6,10 +5,19 @@ export const initialStatus = {
   errors: {},
 };
 
-export const statusRequest = R.assoc('isFetching', true);
-export const statusSuccess = R.compose(R.assoc('errors', {}), R.assoc('isFetching', false));
-export const statusFailure = err => R.compose(
-    R.assoc('status', R.prop('status', err)),
-    R.assoc('errors', getErrors(err)),
-    R.assoc('isFetching', false)
-);
+export const statusRequest = (state, data) =>
+  state
+    .set('data', data)
+    .set('isFetching', true);
+
+export const statusSuccess = (state, data) =>
+  state
+    .set('data', data)
+    .set('error', {})
+    .set('isFetching', false);
+
+export const statusFailure = (state, payload) =>
+  state
+    .set('status', payload)
+    .set('errors', getErrors(payload))
+    .set('isFetching', false);

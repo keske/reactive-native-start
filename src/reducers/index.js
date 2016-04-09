@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
 // Reducers
-import { message } from './modules/message';
+import { repo } from './modules/repo';
 
 const rootReducer = combineReducers({
-  message,
+  repo,
 });
 
 export default rootReducer;

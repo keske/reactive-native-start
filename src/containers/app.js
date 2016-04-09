@@ -4,10 +4,9 @@
 import React from 'react-native';
 import { connect } from 'react-redux/native';
 import { bindActionCreators } from 'redux';
-// import Immutable, { get } from 'immutable';
 
 // Actions
-import { loadMessage } from '../reducers/modules/message';
+import { actionLoadRepoData } from '../reducers/modules/repo';
 
 const {
   Text,
@@ -17,28 +16,47 @@ const {
 class App extends React.Component {
 
   static propTypes = {
-    loadMessage: React.PropTypes.func,
+    actionLoadRepoData: React.PropTypes.func,
     dispatch: React.PropTypes.func,
-    message: React.PropTypes.string,
+    repo: React.PropTypes.object,
     isFetching: React.PropTypes.bool,
   };
 
   componentDidMount() {
-    this.props.loadMessage();
+    this.props.actionLoadRepoData();
   }
 
   render() {
+    const { repo } = this.props;
+
+    if (repo.get('isFetching')) {
+      return (
+        <Text>
+          Loading...
+        </Text>
+      );
+    }
+
     return (
       <ScrollView
-        style={{ flex: 1 }}
         contentContainerStyle={{
+          flex: 1,
           justifyContent: 'center',
-          alignItems: 'center',
         }}
       >
         <Text>
           {
-            this.props.isFetching ? 'Loading' : this.props.message
+            `Repo: ${repo.get('data').name}`
+          }
+        </Text>
+        <Text>
+          {
+            `Forks: ${repo.get('data').forks}`
+          }
+        </Text>
+        <Text>
+          {
+            `Stars: ${repo.get('data').stargazers_count}`
           }
         </Text>
       </ScrollView>
@@ -47,11 +65,8 @@ class App extends React.Component {
 }
 
 export default connect(
-  state => ({
-    message: state.message.data,
-    isFetching: state.message.isFetching,
-  }),
+  ({ repo }) => ({ repo }),
   dispatch => bindActionCreators({
-    loadMessage,
+    actionLoadRepoData,
   }, dispatch)
 )(App);
