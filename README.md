@@ -19,6 +19,8 @@ Read [getting started](https://facebook.github.io/react-native/docs/getting-star
 
 `react-native run-ios`
 
+![https://raw.githubusercontent.com/keske/reactive-native-start/development/static/iOS-Emulator.png](https://raw.githubusercontent.com/keske/reactive-native-start/development/static/iOS-Emulator.png)
+
 #### Android
 
 `react-native run-android`
@@ -31,7 +33,15 @@ Read [getting started](https://facebook.github.io/react-native/docs/getting-star
  
 #### Debugging
 
-Open `http://localhost:8081/debugger-ui` in Google Chrome
+**iOS:** Press `⌘ + ctrl + z` and enable `Debug in Chrome`
+
+![https://raw.githubusercontent.com/keske/reactive-native-start/development/static/iOS-Debug.png](https://raw.githubusercontent.com/keske/reactive-native-start/development/static/iOS-Debug.png)
+
+**Android:** Press `⌘ + m`
+
+After it open `http://localhost:8081/debugger-ui` in Google Chrome
+
+![https://raw.githubusercontent.com/keske/reactive-native-start/development/static/Chrome-Debug.png](https://raw.githubusercontent.com/keske/reactive-native-start/development/static/Chrome-Debug.png)
 
 #### TODO
 1. [ ] Configure Flow
