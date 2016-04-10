@@ -1,6 +1,6 @@
 {
   "name": "Reactive_Native_Start",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "React Native + Redux + Immutable + Babel boilerplate",
   "license": "MIT",
   "author": "Andrey Keske <hello@andreykeske.com>",

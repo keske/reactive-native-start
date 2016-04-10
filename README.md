@@ -25,6 +25,8 @@ Read [getting started](https://facebook.github.io/react-native/docs/getting-star
 
 `react-native run-android`
 
+![https://raw.githubusercontent.com/keske/reactive-native-start/development/static/Android-Emulator.png](https://raw.githubusercontent.com/keske/reactive-native-start/development/static/Android-Emulator.png)
+
 `adb devices` show connected devices
 
 `adb reverse tcp:8081 tcp:8081` to fix error `Unable to download JS bundle`
