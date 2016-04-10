@@ -27,9 +27,11 @@ Read [getting started](https://facebook.github.io/react-native/docs/getting-star
 
 `adb reverse tcp:8081 tcp:8081` to fix error `Unable to download JS bundle`
 
+`export ANDROID_HOME=/usr/local/opt/android-sdk` for OS X if `SDK location not found`
+ 
 #### Debugging
 
-Open in browser `http://localhost:8081/debugger-ui`
+Open `http://localhost:8081/debugger-ui` in Google Chrome
 
 #### TODO
 1. [ ] Configure Flow
