@@ -2,12 +2,12 @@
 
 import React from 'react-native';
 import { Provider } from 'react-redux/native';
-import configureStore from '../reducers/store/configure';
-import Scene from '../components/scene';
+import configureStore from './reducers/store/configure';
+import App from './containers/App';
 
 const Root = () =>
   <Provider store={configureStore()}>
-    {() => <Scene />}
+    {() => <App />}
   </Provider>;
 
 export default Root;
