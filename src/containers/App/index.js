@@ -1,25 +1,27 @@
 /* @flow */
-/* eslint-disable prefer-const */
 
-import React from 'react-native';
+import React, { Component, PropTypes } from 'react-native';
 import { connect } from 'react-redux/native';
 import { bindActionCreators } from 'redux';
 
 // Actions
-import { actionLoadRepoData } from '../reducers/modules/repo';
+import { actionLoadRepoData } from '../../reducers/modules/repo';
+
+// Components
+import KeyValue from '../../components/KeyValue';
 
 const {
   Text,
   ScrollView,
 } = React;
 
-class App extends React.Component {
+class App extends Component {
 
   static propTypes = {
-    actionLoadRepoData: React.PropTypes.func,
-    dispatch: React.PropTypes.func,
-    repo: React.PropTypes.object,
-    isFetching: React.PropTypes.bool,
+    actionLoadRepoData: PropTypes.func,
+    dispatch: PropTypes.func,
+    repo: PropTypes.object,
+    isFetching: PropTypes.bool,
   };
 
   componentDidMount() {
@@ -42,23 +44,21 @@ class App extends React.Component {
         contentContainerStyle={{
           flex: 1,
           justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        <Text>
-          {
-            `Repo: ${repo.get('data').name}`
-          }
-        </Text>
-        <Text>
-          {
-            `Forks: ${repo.get('data').forks}`
-          }
-        </Text>
-        <Text>
-          {
-            `Stars: ${repo.get('data').stargazers_count}`
-          }
-        </Text>
+        <KeyValue
+          title="Repo"
+          val={repo.get('data').name}
+        />
+        <KeyValue
+          title="Forks"
+          val={repo.get('data').forks}
+        />
+        <KeyValue
+          title="Stars"
+          val={repo.get('data').stargazers_count}
+        />
       </ScrollView>
     );
   }
