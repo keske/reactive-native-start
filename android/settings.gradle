@@ -1,3 +1,3 @@
-rootProject.name = 'App'
+rootProject.name = 'Reactive_Native_Start'
 
 include ':app'
